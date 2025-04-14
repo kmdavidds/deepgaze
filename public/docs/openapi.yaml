@@ -1,0 +1,981 @@
+openapi: 3.0.3
+info:
+  title: 'Laravel API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+tags:
+  -
+    name: Endpoints
+    description: ''
+paths:
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: b
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: zbailey@example.net
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: '-0pBNvYgxw'
+                  nullable: false
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: gbailey@example.net
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      operationId: postApiLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/classrooms:
+    get:
+      summary: ''
+      operationId: getApiClassrooms
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiClassrooms
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: b
+                  nullable: false
+                icon:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+                color:
+                  type: string
+                  description: 'Must not be greater than 50 characters.'
+                  example: 'n'
+                  nullable: false
+                user_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: architecto
+                  nullable: false
+              required:
+                - title
+                - icon
+                - color
+                - user_id
+      security: []
+  '/api/classrooms/{id}':
+    get:
+      summary: ''
+      operationId: getApiClassroomsId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiClassroomsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: b
+                  nullable: false
+                icon:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+                color:
+                  type: string
+                  description: 'Must not be greater than 50 characters.'
+                  example: 'n'
+                  nullable: false
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiClassroomsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the classroom.'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/chapters:
+    get:
+      summary: ''
+      operationId: getApiChapters
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiChapters
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                classroom_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the classrooms table.'
+                  example: architecto
+                  nullable: false
+                category:
+                  type: string
+                  description: ''
+                  example: quiz
+                  nullable: false
+                  enum:
+                    - material
+                    - quiz
+                    - task
+                icon:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'n'
+                  nullable: false
+                content:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+              required:
+                - classroom_id
+                - category
+                - icon
+                - title
+                - content
+      security: []
+  '/api/chapters/{id}':
+    get:
+      summary: ''
+      operationId: getApiChaptersId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiChaptersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                classroom_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the classrooms table.'
+                  example: null
+                  nullable: false
+                category:
+                  type: string
+                  description: ''
+                  example: material
+                  nullable: false
+                  enum:
+                    - material
+                    - quiz
+                    - task
+                icon:
+                  type: integer
+                  description: ''
+                  example: 16
+                  nullable: false
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'n'
+                  nullable: false
+                content:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiChaptersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the chapter.'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/chapter-attempts:
+    get:
+      summary: ''
+      operationId: getApiChapterAttempts
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiChapterAttempts
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: architecto
+                  nullable: false
+                chapter_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the chapters table.'
+                  example: architecto
+                  nullable: false
+              required:
+                - user_id
+                - chapter_id
+      security: []
+  '/api/chapter-attempts/{id}':
+    get:
+      summary: ''
+      operationId: getApiChapterAttemptsId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiChapterAttemptsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: null
+                  nullable: false
+                chapter_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the chapters table.'
+                  example: null
+                  nullable: false
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiChapterAttemptsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the chapter attempt.'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/questions:
+    get:
+      summary: ''
+      operationId: getApiQuestions
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiQuestions
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chapter_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the chapters table.'
+                  example: architecto
+                  nullable: false
+                description:
+                  type: string
+                  description: ''
+                  example: 'Eius et animi quos velit et.'
+                  nullable: false
+              required:
+                - chapter_id
+                - description
+      security: []
+  '/api/questions/{id}':
+    get:
+      summary: ''
+      operationId: getApiQuestionsId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiQuestionsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chapter_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the chapters table.'
+                  example: null
+                  nullable: false
+                description:
+                  type: string
+                  description: ''
+                  example: 'Eius et animi quos velit et.'
+                  nullable: false
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiQuestionsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the question.'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/answers:
+    get:
+      summary: ''
+      operationId: getApiAnswers
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiAnswers
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the questions table.'
+                  example: architecto
+                  nullable: false
+                description:
+                  type: string
+                  description: ''
+                  example: 'Eius et animi quos velit et.'
+                  nullable: false
+              required:
+                - question_id
+                - description
+      security: []
+  '/api/answers/{id}':
+    get:
+      summary: ''
+      operationId: getApiAnswersId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiAnswersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: ''
+                  example: 'Eius et animi quos velit et.'
+                  nullable: false
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiAnswersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the answer.'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/correct-answers:
+    get:
+      summary: ''
+      operationId: getApiCorrectAnswers
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiCorrectAnswers
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the questions table.'
+                  example: architecto
+                  nullable: false
+                answer_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the answers table.'
+                  example: architecto
+                  nullable: false
+              required:
+                - question_id
+                - answer_id
+      security: []
+  '/api/correct-answers/{id}':
+    get:
+      summary: ''
+      operationId: getApiCorrectAnswersId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiCorrectAnswersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the questions table.'
+                  example: null
+                  nullable: false
+                answer_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the answers table.'
+                  example: null
+                  nullable: false
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiCorrectAnswersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the correct answer.'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/user-answers:
+    get:
+      summary: ''
+      operationId: getApiUserAnswers
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiUserAnswers
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chapter_attempt_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the chapter_attempts table.'
+                  example: architecto
+                  nullable: false
+                answer_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the answers table.'
+                  example: architecto
+                  nullable: false
+                answer_text:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: true
+                score:
+                  type: number
+                  description: ''
+                  example: 4326.41688
+                  nullable: true
+              required:
+                - chapter_attempt_id
+                - answer_id
+      security: []
+  '/api/user-answers/{id}':
+    get:
+      summary: ''
+      operationId: getApiUserAnswersId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiUserAnswersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chapter_attempt_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the chapter_attempts table.'
+                  example: null
+                  nullable: false
+                answer_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the answers table.'
+                  example: null
+                  nullable: false
+                answer_text:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: true
+                score:
+                  type: number
+                  description: ''
+                  example: 4326.41688
+                  nullable: true
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiUserAnswersId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user answer.'
+        example: 16
+        required: true
+        schema:
+          type: integer
